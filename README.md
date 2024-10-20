@@ -1,35 +1,41 @@
 # ConnectX
 
+## Problem Statement
+
+In ConnectX, players strategize to align a sequence of X tokens either horizontally, vertically, or diagonally on a customizable board of varying dimensions. This project applies reinforcement learning techniques to develop an efficient AI capable of mastering ConnectX. The algorithms developed were tested in a Kaggle competition, where we achieved 9th place out of 225 teams by using AlphaZero as the top-performing strategy.
+
 ## Overview
 
-This project explores the use of reinforcement learning algorithms to master ConnectX, a variation of Connect 4. The objective is to align X tokens in a row, column, or diagonal before your opponent, with varying board dimensions and token counts needed for a win. We experimented with a variety of reinforcement learning techniques, including Monte Carlo Tree Search (MCTS), AlphaZero, Minimax, and Greedy algorithms.
+This project explores reinforcement learning algorithms to master ConnectX, a variation of Connect 4. The goal is to align X tokens in a row, column, or diagonal before your opponent. The project utilizes Monte Carlo Tree Search (MCTS), AlphaZero, Minimax, and Greedy algorithms.
 
-Our project, tested in a Kaggle competition, achieved a **9th place ranking** out of 225 teams by leveraging AlphaZero as the top-performing strategy.
+### Key Highlights:
+- **ConnectX Game Environment**: Strategies are developed for an MxN board, ensuring optimal moves within a 5-second time frame.
+- **Reinforcement Learning**: The project uses AlphaZero, MCTS, Minimax, and Greedy algorithms to make intelligent decisions.
 
 ## Key Features
 
 1. **ConnectX Game Environment**:
-   - Develops strategies for playing on an MxN board, ensuring optimal moves within a time constraint of 5 seconds per move.
-   - Ensures compliance with game rules, such as avoiding selecting full columns.
+   - Ensures compliance with game rules like avoiding full columns.
+   - Implements strategies with a 5-second move time constraint.
 
 2. **Reinforcement Learning Algorithms**:
-   - **Greedy Algorithm**: Implements a simple yet effective strategy for quick decisions by focusing on immediate gains.
-   - **Minimax with Alpha-Beta Pruning**: Evaluates future moves to minimize the opponent’s score while maximizing the player’s own.
-   - **Monte Carlo Tree Search (MCTS)**: Iteratively explores and simulates promising moves, adjusting based on simulation results.
-   - **AlphaZero**: Combines MCTS and neural networks to generate optimal move probabilities, using self-play for training.
+   - **Greedy Algorithm**: Focuses on making the best immediate decision.
+   - **Minimax with Alpha-Beta Pruning**: Evaluates future moves while minimizing the opponent’s score.
+   - **Monte Carlo Tree Search (MCTS)**: Simulates potential game moves iteratively and adjusts strategies.
+   - **AlphaZero**: Combines MCTS and neural networks to generate optimal moves through self-play.
 
 3. **Neural Networks**:
-   - Neural networks predict the best moves based on the game state, learning complex strategies through reinforcement learning and experience replay.
+   - Predicts optimal moves based on the current game state using reinforcement learning and experience replay.
 
 ## Methodologies Used
 
-1. **Greedy Algorithm**: Focuses on making the best local choice in every step without considering long-term consequences.
-   
-2. **Minimax with Alpha-Beta Pruning**: Traditional method for perfect information games, examining all possible future moves. Prunes branches that are unlikely to affect the final decision.
+1. **Greedy Algorithm**: Simple strategy that focuses on immediate gains without considering long-term consequences.
 
-3. **Plain Monte Carlo Tree Search (MCTS)**: Builds a tree of potential game states and uses simulations to update the tree and make decisions based on confidence bounds.
+2. **Minimax with Alpha-Beta Pruning**: Looks at all possible future moves and outcomes, pruning irrelevant branches for efficiency.
 
-4. **AlphaZero**: Combines MCTS with a neural network that predicts move probabilities and value functions, improving through self-play and experience replay.
+3. **Plain Monte Carlo Tree Search (MCTS)**: Builds a tree of potential game states, simulates moves, and updates based on confidence bounds.
+
+4. **AlphaZero**: Uses self-play to iteratively improve, combining MCTS with a neural network for move probabilities and win/loss predictions.
 
 ## Performance Comparison
 
@@ -39,15 +45,23 @@ Our project, tested in a Kaggle competition, achieved a **9th place ranking** ou
 - **MCTS-Minimax Hybrid**: Score of 980.
 - **AlphaZero**: Score of 1282 (Top performer).
 
+## Front-End Mobile App
+
+A front-end Android application was developed using Kotlin to interact with the ConnectX AI. Below are the main functionalities of the app:
+
+- **App Logic**: The app interacts with the reinforcement learning model and allows users to play ConnectX against the AI.
+- **Game Interface**: Users can make moves via the app’s user interface, and the AI responds with its move in real-time.
+
 ## Project Structure
 
-- **player.py**: The core implementation where the player function is defined, making decisions based on the chosen algorithm.
-- **neural_network.py**: Implements the neural network architecture used in AlphaZero for decision-making.
-- **mcts.py**: Code for running Monte Carlo Tree Search to explore game trees.
-- **train.py**: Scripts for training and fine-tuning models using self-play.
+- **player.py**: Defines the player function, making decisions based on the chosen algorithm.
+- **neural_network.py**: Implements the neural network architecture used in AlphaZero.
+- **mcts.py**: Runs Monte Carlo Tree Search to explore game trees.
+- **train.py**: Scripts for training and fine-tuning the models via self-play.
+- **MainActivity.kt**: Android app logic for interacting with the AI and providing a front-end interface.
 
 ## Conclusion
 
-- AlphaZero performed the best in terms of balancing exploration and exploitation, delivering optimal game strategies through self-improvement and learning.
-- While MCTS provided strong performance, AlphaZero’s combination with neural networks led to higher success rates, especially when fine-tuning hyperparameters.
-- Future improvements could focus on further optimizing neural networks, hyperparameter tuning, and utilizing larger datasets for better generalization.
+- **AlphaZero** performed best in balancing exploration and exploitation, providing optimal strategies through self-improvement.
+- MCTS also performed well, but AlphaZero’s integration with neural networks led to superior results.
+- Future improvements may involve optimizing neural network parameters and utilizing larger datasets for improved generalization.
